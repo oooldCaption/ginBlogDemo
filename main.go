@@ -1,15 +1,9 @@
 package main
 
 import (
-	"ginBlog/config"
-	"ginBlog/dao"
-	"ginBlog/models"
+	"ginBlog/router"
 )
 
 func main() {
-	user := models.User{
-		Username: config.Name,
-		Password: config.PSW,
-	}
-	dao.Mgr.AddUser(&user)
+	router.Start()
 }
