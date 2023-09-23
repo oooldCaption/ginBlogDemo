@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="/assets/editormd/css/editormd.min.css">
+
     <title>Document</title>
 </head>
 <body>
@@ -14,15 +16,24 @@
 <div class="container">
 
     {{template "header"}}
-
-    <div class="row justify-content-center mt-3">
-
-        <div class="col-md-4">
-            <p>首页...</p>
-        </div>
+    <div id="test-editormd">
+        <textarea style="display:none;"></textarea>
     </div>
 
 </div>
 
 </body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="assets/editormd/editormd.min.js"></script>
+<script type="text/javascript">
+    var testEditor;
+    $(function() {
+        testEditor = editormd("test-editormd", {
+            width   : "100%",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "assets/editormd/lib/"
+        });
+    });
+</script>
 </html>
