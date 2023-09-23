@@ -11,8 +11,8 @@ func Start() {
 	e.Static("/assets", "./assets")
 
 	e.GET("/", controller.Index)
-	e.GET("/index", controller.ListUser)
-	e.POST("/users", controller.AddUser)
+	e.POST("/register", controller.RegisterUser)
+	e.GET("/register", controller.GoRegister)
 
 	e.Run()
 }

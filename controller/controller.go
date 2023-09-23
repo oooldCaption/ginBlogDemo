@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func AddUser(c *gin.Context) {
+func RegisterUser(c *gin.Context) {
 	username := c.PostForm("username")
 	password := c.PostForm("password")
 
@@ -17,7 +17,12 @@ func AddUser(c *gin.Context) {
 	}
 
 	dao.Mgr.AddUser(user)
+	c.Redirect(301, "/")
 }
+func GoRegister(c *gin.Context) {
+	c.HTML(http.StatusOK, "register.html", nil)
+}
+
 func Index(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", nil)
 }
