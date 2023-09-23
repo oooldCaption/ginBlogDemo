@@ -11,6 +11,7 @@ import (
 
 type Manager interface {
 	AddUser(user *models.User)
+	Login(username string) models.User
 }
 type manager struct {
 	db *gorm.DB
@@ -18,6 +19,12 @@ type manager struct {
 
 func (m manager) AddUser(user *models.User) {
 	m.db.Create(user)
+}
+
+func (m manager) Login(username string) models.User {
+	var user models.User
+	m.db.Where("username=?", username).First(&user)
+	return user
 }
 
 var Mgr Manager
