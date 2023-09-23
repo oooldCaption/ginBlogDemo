@@ -57,8 +57,11 @@ func init() {
 	Mgr = &manager{db: db}
 
 	merr := db.AutoMigrate(&models.User{})
+
 	if merr != nil {
 		return
 	}
+
+	_ = db.AutoMigrate(&models.Post{})
 
 }
